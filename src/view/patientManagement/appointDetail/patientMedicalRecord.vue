@@ -181,11 +181,12 @@
       // 添加新病历
       addPatientCase: function () {
         this.isLoading = true;
+        const userId = JSON.parse(sessionStorage.getItem('doctorInfo')).id;
         addPatientCase({
           appointmentId: this.appointId,
           cardId: this.cardId,
           content: this.medicalRecord,
-          doctorId: getCookie('username')
+          doctorId: userId
         }).then(res => {
           if (res.code === 200) {
             this.isLoading = false;
@@ -237,7 +238,7 @@
       @include flex-direction(row);
       .text-box{
         width: 33%;
-        @include font-style(17px, #000000);
+        @include font-style(17px, #34495e);
         text-align: left;
         .gray-text{
           @include font-style(17px, $gray-text-color);

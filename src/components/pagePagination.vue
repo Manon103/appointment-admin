@@ -9,7 +9,7 @@
       :page-size="pageList.pageSize"
       :page-sizes="[5,10,15,20]"
       :current-page.sync="pageList.pageNum"
-      :total="total">
+      :total="pageList.total">
     </el-pagination>
   </div>
 </template>
@@ -17,13 +17,13 @@
 <script>
     export default {
         name: "pagePagination",
-      props: {
-          pageList: {
-            pageNum: 1,
-            pageSize: 5,
-            total: 0
-          }
-      },
+        props: {
+            pageList: {
+              pageNum: 1,
+              pageSize: 5,
+              total: 0
+            }
+        },
       methods: {
         //  切换页面的一页展示的条数
         handleSizeChange(val) {

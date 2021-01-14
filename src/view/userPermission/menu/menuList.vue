@@ -141,8 +141,4 @@
 
 <style scoped lang="scss">
   @import "../../../common/scss/common";
-  .button-table-box{
-    @include width-margin(95%, 100%);
-    margin-top: 15px;
-  }
 </style>

@@ -31,12 +31,6 @@ service.interceptors.response.use(
     const res = response.data
     // if !200 start
     if (res.code !== 200) {
-      Message({
-        message: res.massage,
-        type: 'error',
-        duration: 3 * 1000
-      })
-
       // code = 401 表示未登录
       // if 401 start
       if (res.code === 401) {

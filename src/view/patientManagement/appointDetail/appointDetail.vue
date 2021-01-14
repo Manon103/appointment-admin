@@ -204,7 +204,8 @@
           this.statusData = [];
           this.tableAllData.tableData = [];
           let date = dateFormYMD(this.appointDate);
-          getPatientList(getCookie('username'), date, this.selectTimeID,
+          const userId = JSON.parse(sessionStorage.getItem('doctorInfo')).id;
+          getPatientList(userId, date, this.selectTimeID,
             this.pageList.pageNum, this.pageList.pageSize).then(res => {
               if (res.code === 200) {
                 let data = res.data.list
@@ -250,7 +251,7 @@
 <style lang="scss">
   @import "../../../common/scss/common";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     .top-row-box{
       width: 100%;
       height: 100%;
@@ -263,7 +264,6 @@
   }
   .button-table-box{
     @include width-margin(100%, 100%);
-    margin-top: 15px;
     .treat-room-text{
       margin-top: 20px;
       @include font-style(16px, $major-blue-color);

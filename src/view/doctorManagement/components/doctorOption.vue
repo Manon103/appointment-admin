@@ -5,7 +5,7 @@
       <div class="info-out-box">
         <div class="info-in-box" v-show="doctorData.isEdit">
           <span class="title">编号：</span>
-          <el-input v-model="doctorData.ID" placeholder="请输入内容" class="input-box" :disabled="true"></el-input>
+          <el-input v-model="doctorData.ID" placeholder="请输入内容" class="input-box" disabled></el-input>
         </div>
         <div class="info-in-box">
           <span class="title">姓名：</span>
@@ -55,22 +55,22 @@
             </el-option>
           </el-select>
         </div>
-      </div>
-      <div class="brief-box">
-        <span class="title">简介：</span>
-        <el-input
-          type="textarea"
-          placeholder="请输入内容"
-          v-model="doctorData.specialty"
-          class="brief"
-          maxlength="1000"
-          :autosize="{ minRows: 2, maxRows: 6}"
-          show-word-limit>
-        </el-input>
+        <div class="info-in-box">
+          <span class="title">简介：</span>
+          <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="doctorData.specialty"
+            class="brief"
+            maxlength="1000"
+            :autosize="{ minRows: 2, maxRows: 6}"
+            show-word-limit>
+          </el-input>
+        </div>
       </div>
     </div>
-    <el-button class="insure-button" type="primary" style="margin-top: 15px;"
-               @click="validateData" v-loading.fullscreen.lock="loading">确定</el-button>
+    <el-button type="primary" style="margin-top: 15px; width:120px"
+               @click="validateData" v-loading.fullscreen.lock="loading">添加</el-button>
   </div>
 
 </template>
@@ -196,10 +196,25 @@
 <style lang="scss">
   @import "../../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     @include flex-direction(column);
     margin-top: 20px;
     // 上面的标题和按钮
+    .info-in-box {
+      margin-bottom: 15px;
+      .title {
+        display: inline-block;
+        width: 80px;
+        text-align: left;
+      }
+      .el-textarea {
+        width: calc(100% - 100px)
+      }
+      .input-box {
+        width: calc(100% - 100px);
+        margin-left: 0;
+      }
+    }
     .top-title{
       @include font-style(18px, $major-blue-color);
       margin-right: 40px;
@@ -218,13 +233,13 @@
       .brief-box{
         @include width-margin(50%,auto);
         @include flex-direction(column);
-        text-align: center;
+        
         margin-left: 5%;
         .title{
           width: 100%;
           height: 40px;
           line-height: 40px;
-          @include font-style(16px, #000000);
+          @include font-style(16px, #34495e);
         }
         .brief{
           @include width-margin(80%, auto);

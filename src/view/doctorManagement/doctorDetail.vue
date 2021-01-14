@@ -2,10 +2,10 @@
     <div>
       <!--      表格位置-->
       <div class="button-table-box" v-loading="isLoading">
-        <div class="info-in-box">
+        <div class="info-in-box" style="margin-bottom: 20px">
           <span class="title">姓名：</span>
           <el-input placeholder="输入医生姓名" v-model="searchDoctor" style="width: 15%"></el-input>
-          <span class="title" style="margin-left: 30px;">所在专科：</span>
+          <span class="title" style="margin-left: 20px;">所在专科：</span>
           <el-select v-model="selectDepartmentID" placeholder="请选择" style="width: 15%;"
                      @change="getOutpatientByDepartmentID">
             <el-option
@@ -15,7 +15,7 @@
               :value="item.id">
             </el-option>
           </el-select>
-          <span class="title" style="margin-left: 30px;">所在门诊：</span>
+          <span class="title" style="margin-left: 20px;">所在门诊：</span>
           <el-select v-model="selectOutpatientID" placeholder="请选择" style="width: 20%;">
             <el-option
               v-for="item in selectOutpatientData"
@@ -24,11 +24,9 @@
               :value="item.id">
             </el-option>
           </el-select>
-          <el-button type="primary" size="mini" style="margin-left: 30px;" @click="getDoctorList()">查询</el-button>
-        </div>
-        <div class="button-box" style="margin-top: 20px;">
-            <el-button type="primary"  size="small" icon="el-icon-circle-plus"
-                       class="add-button" @click="addDoctor()">添加</el-button>
+          <el-button type="primary" style="margin-left: 20px;" @click="getDoctorList()">查询</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus"
+                       class="add-button" @click="addDoctor()">添加医生</el-button>
         </div>
         <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
       </div>
@@ -64,12 +62,12 @@
               tableTitle: [{
                 prop: 'ID',
                 label: '医生ID',
-                width: '100',
+                width: '80',
                 option: ''
               }, {
                 prop: 'name',
                 label: '姓名',
-                width: '130',
+                width: '120',
                 option: ''
               }, {
                 prop: 'gender',
@@ -79,12 +77,12 @@
               }, {
                 prop: 'jobTitle',
                 label: '职称',
-                width: '130',
+                width: '120',
                 option: ''
               }, {
                 prop: 'specialty',
                 label: '简介',
-                width: '300',
+                width: '360',
                 option: ''
               }],
               tableData: [],
@@ -191,6 +189,7 @@
             this.searchDoctor
           ).then(res => {
             if (res.code === 200 && res.data.list.length >0 ){
+              this.pageList.total = res.data.total;
               res.data.list.forEach(function (item, index) {
                 _this.tableAllData.tableData.push({
                   ID: item.id,
@@ -249,8 +248,7 @@
 
 <style scoped lang="scss">
   @import "../.././common/scss/common.scss";
-  .button-table-box{
-    @include width-margin(90%, 100%);
-    margin-top: 15px;
+  .info-in-box {
+    align-items: center;
   }
 </style>

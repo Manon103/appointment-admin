@@ -31,7 +31,7 @@
             text-color="#ffffff"
             active-text-color="#E6A23C"
           >
-            <el-submenu :index="index + 1" v-for="(item,index) in $router.options.routes"
+            <el-submenu :index="(index + 1).toString()" v-for="(item,index) in $router.options.routes"
                         :key="index" v-if="!item.hidden">
               <template slot="title">
                 <i :class="item.meta.icon" class="tab-icon"></i>
@@ -75,7 +75,7 @@
     data() {
       return {
         sysName: '挂号系统',
-        sysUserName: 'admin',
+        sysUserName: '',
         collapsed: false
       }
     },
@@ -85,17 +85,16 @@
         this.$confirm('确认退出吗？','提示',{
 
         }).then(() => {
-          sessionStorage.removeItem('user')
+          sessionStorage.clear();
           this.$router.push('/')
         })
-      }
+      },
     },
     created() {
       if (getToken()) {
         getPermission()
       }
-      console.log(this.$router)
-      console.log('skdlfjdf')
+      this.sysUserName = sessionStorage.getItem('username');
     }
   }
 </script>
@@ -224,7 +223,7 @@
       .content-container {
         flex: 1;
         overflow-y: scroll;
-        padding: 20px;
+        padding: 20px 30px;
         .breadcrumb-container {
           .title {
             width: 200px;

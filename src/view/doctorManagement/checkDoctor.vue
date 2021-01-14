@@ -41,7 +41,7 @@
           class="brief"
           maxlength="500"
           show-word-limit
-          disabled="true"
+          disabled
           :autosize="{ minRows: 2, maxRows: 5}">
         </el-input>
       </div>
@@ -72,7 +72,7 @@
 <style lang="scss">
   @import "../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     @include flex-direction(column);
     margin-top: 10px;
     // 上面的标题和按钮
@@ -98,13 +98,13 @@
       .brief-box{
         @include width-margin(50%,auto);
         @include flex-direction(column);
-        text-align: center;
+        
         margin-left: 5%;
         .title{
           width: 100%;
           height: 40px;
           line-height: 40px;
-          @include font-style(16px, #000000);
+          @include font-style(16px, #34495e);
         }
         .brief{
           @include width-margin(80%, auto);

@@ -1,12 +1,10 @@
 <template>
-  <div class="button-table-box">
+  <div class="out-box">
     <div class="info-in-box">
       <span class="title">名称：</span>
       <el-input placeholder="输入专科名称" v-model="searchDepartment" style="width: 30%"></el-input>
-      <el-button type="primary" size="mini" style="margin-left: 30px;" @click="getDepartmentList">查询</el-button>
-    </div>
-    <div class="button-box">
-      <el-button type="primary"  size="small" icon="el-icon-circle-plus"
+      <el-button type="primary" style="margin: 0 15px 0 30px;" @click="getDepartmentList">查询</el-button>
+      <el-button type="primary"  icon="el-icon-circle-plus"
                  class="add-button" @click="dialogFormVisible = true">添加</el-button>
     </div>
     <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
@@ -236,8 +234,7 @@
 
 <style scoped lang="scss">
   @import "../../.././common/scss/common.scss";
-  .button-table-box{
-    @include width-margin(80%, 100%);
-    margin-top: 30px;
+  .info-in-box {
+    align-items: center;
   }
 </style>

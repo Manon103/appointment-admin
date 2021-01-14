@@ -3,10 +3,8 @@
       <div class="info-in-box">
         <span class="title">名称：</span>
         <el-input placeholder="输入医院名称" v-model="searchHospital" style="width: 30%"></el-input>
-        <el-button type="primary" size="mini" style="margin-left: 30px;" @click="getHospitalInfo">查询</el-button>
-      </div>
-      <div class="button-box">
-        <el-button type="primary"  size="small" icon="el-icon-circle-plus"
+        <el-button type="primary" style="margin-left: 30px;" @click="getHospitalInfo">查询</el-button>
+        <el-button type="primary" icon="el-icon-circle-plus"
                    class="add-button" @click="toAddHospital()">添加</el-button>
       </div>
       <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
@@ -156,8 +154,7 @@ export default {
 
 <style scoped lang="scss">
   @import "../.././common/scss/common.scss";
-  .button-table-box{
-    @include width-margin(90%, 100%);
-    margin-top: 30px;
+  .info-in-box {
+    align-items: center;
   }
 </style>

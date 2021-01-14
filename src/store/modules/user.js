@@ -34,7 +34,6 @@ const user = {
       const username = userInfo.username.trim()
       return new Promise((resolve, reject) => {
         login(username, SHA256(userInfo.password)).then(response => {
-          console.log(response)
           const token = response.data;
           commit('SET_TOKEN', token);
           setToken(token);
@@ -51,8 +50,8 @@ const user = {
         getUserInfo().then(response => {
           const data = response.data;
           sessionStorage.setItem('accountID', data.accountId);
-          if (data.name && data.name.length > 0) { // 验证返回的roles是否是一个非空数组
-            commit('SET_NAME', data.name)
+          if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
+            commit('SET_NAME', data.userName)
           } else {
             reject('getInfo: roles must be a non-null array !')
           }

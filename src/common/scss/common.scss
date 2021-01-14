@@ -6,7 +6,6 @@ $gray-text-color: #A6A6A6;
 @mixin width-margin($width, $height) {
   width: $width;
   height: $height;
-  margin: 0 auto;
 }
 // 最右上角的按钮
 .button-box{
@@ -35,15 +34,14 @@ $gray-text-color: #A6A6A6;
   @include flex-direction(row);
   .title{
     width: auto;
-    @include font-style(16px, #000000);
-    margin-right: 20px;
+    @include font-style(14px, #6d7c8b);
+    margin-right: 15px;
   }
   .gray-text{
     @include font-style(16px, $gray-text-color);
   }
   .input-box{
     width: 70%;
-    margin-left: -5px;
   }
 }
 // 较长的按钮

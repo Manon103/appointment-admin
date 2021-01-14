@@ -219,10 +219,6 @@
 <style scoped lang="scss">
   @import "../../../common/scss/common";
   .out-box{
-    @include width-margin(90%, 100%);
-  }
-  .button-table-box{
     @include width-margin(100%, 100%);
-    margin-top: 15px;
   }
 </style>

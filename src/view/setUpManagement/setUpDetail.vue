@@ -44,20 +44,19 @@
       <div class="info-in-box margin-right">
         <span class="title">日期：</span>
         <el-date-picker
+          style="width: 66%"
           v-model="dateOutCall"
           type="date"
           placeholder="选择日期">
         </el-date-picker>
       </div>
 
-      <el-button type="primary" style="width: 70px;height: 90%;" @click="getAllOutCallList()">查询</el-button>
+      <el-button type="primary" style="width: 70px;height: 90%;" class="margin-right" @click="getAllOutCallList()">查询</el-button>
+      <el-button type="primary"  icon="el-icon-circle-plus"
+                   class="add-button" @click="dialogFormVisible = true">添加排班</el-button>
     </div>
     <!--      表格位置-->
     <div class="button-table-box">
-      <div class="button-box">
-        <el-button type="primary"  size="small" icon="el-icon-circle-plus"
-                   class="add-button" @click="dialogFormVisible = true">添加</el-button>
-      </div>
       <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
       <page-pagination :page-list="pageList" ref="pagePagination"></page-pagination>
     </div>
@@ -376,6 +375,7 @@
         getAllOutCallList(dateFormYMD(this.dateOutCall), this.pageList.pageNum, this.pageList.pageSize,
           this.selectHospitalID, this.selectDepartmentID, this.selectOutpatientID).then(res => {
             if (res.code === 200) {
+              this.pageList.total = res.data.total;
               const data = res.data.list;
               let that = this;
               if (data.length > 0) {
@@ -444,7 +444,7 @@
 <style scoped lang="scss">
   @import "../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     .top-row-box{
       width: 100%;
       height: 100%;
@@ -452,12 +452,8 @@
       align-items: center;
       flex-wrap: wrap;
       .margin-right{
-        margin-right: 30px;
+        margin-right: 20px;
       }
     }
-  }
-  .button-table-box{
-    @include width-margin(100%, 100%);
-    margin-top: 15px;
   }
 </style>

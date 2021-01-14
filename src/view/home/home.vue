@@ -41,7 +41,7 @@
             class="brief"
             maxlength="500"
             show-word-limit
-            disabled="true"
+            disabled
             :autosize="{ minRows: 5, maxRows: 5}">
           </el-input>
         </div>
@@ -145,9 +145,9 @@
         },
         // 当登录的是医生的账号时
         getDoctorInfo: function () {
-          getDoctorInfo(parseInt(this.accountIdentify)).then(res => {
+          getDoctorInfo(this.accountIdentify).then(res => {
             if (res.code === 200) {
-              this.infoForm = res.data
+              this.infoForm = JSON.parse(sessionStorage.getItem('doctorInfo'));
             }
           }).catch(() => {
             tips('error', '获取医生信息失败')
@@ -155,11 +155,12 @@
         },
       },
       created() {
-          this.accountIdentify = getCookie('username');
+          this.accountIdentify = sessionStorage.getItem('username');
           if (this.accountIdentify !== 'admin') {
-            this.getDoctorInfo();
+            this.infoForm = JSON.parse(sessionStorage.getItem('doctorInfo'));
+            // this.getDoctorInfo();
           }
-        this.$store.dispatch('GetInfo').then(() => {})
+          this.$store.dispatch('GetInfo').then(() => {})
       }
     }
 </script>
@@ -167,9 +168,7 @@
 <style lang="scss">
   @import "../../common/scss/common.scss";
   .out-box{
-    width: 80%;
     height: auto;
-    margin-left: 10%;
     position: relative;
     .input-box{
       width: 60%;
@@ -192,13 +191,12 @@
     .brief-box{
       @include width-margin(50%,auto);
       @include flex-direction(column);
-      text-align: center;
       margin-left: 5%;
       .title{
         width: 100%;
         height: 40px;
         line-height: 40px;
-        @include font-style(16px, #000000);
+        @include font-style(16px, #34495e);
       }
       .brief{
         @include width-margin(90%, auto);

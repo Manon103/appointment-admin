@@ -20,6 +20,18 @@
           <span class="title">电话：</span>
           <el-input v-model="hospitalData.phone" placeholder="请输入内容" class="input-box"></el-input>
         </div>
+        <div class="info-in-box">
+          <span class="title">简介：</span>
+          <el-input
+            type="textarea"
+            placeholder="请输入内容"
+            v-model="hospitalData.description"
+            class="brief"
+            maxlength="1000"
+            :autosize="{ minRows: 2, maxRows: 6}"
+            show-word-limit>
+          </el-input>
+        </div>
       </div>
 
       <div class="picture-box">
@@ -37,22 +49,8 @@
           <i class="el-icon-plus"></i>
         </el-upload>
       </div>
-
-
     </div>
-    <div class="brief-box">
-      <span class="title">简介：</span>
-      <el-input
-        type="textarea"
-        placeholder="请输入内容"
-        v-model="hospitalData.description"
-        class="brief"
-        maxlength="1000"
-        :autosize="{ minRows: 2, maxRows: 6}"
-        show-word-limit>
-      </el-input>
-    </div>
-    <el-button class="insure-button" type="primary" style="margin-top: 15px;" @click="uploadPicture">确定</el-button>
+    <el-button class="insure-button" type="primary" style="margin: 15px 0  0 0" @click="uploadPicture">确定</el-button>
   </div>
 </template>
 
@@ -76,7 +74,6 @@
         // 关于上传的图片的
         hideUpload: false,
         fileList: [],
-        hospitalData: {},
         fullscreenLoading: false, // 进行整个屏幕的加载的
         isValidate: true, // 用作表单的验证
       }
@@ -227,8 +224,11 @@
 <style lang="scss">
   @import "../../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     @include flex-direction(column);
+    .el-textarea {
+      width: 70%;
+    }
     margin-top: 20px;
     // 上面的标题和按钮
     .top-title{
@@ -245,6 +245,12 @@
       .info-out-box{
         width: 50%;
         height: 100%;
+        .info-in-box {
+          .input-box {
+            margin-left: 0;
+          }
+          margin-bottom: 10px;
+        }
       }
       .picture-box{
         width: 50%;
@@ -273,7 +279,7 @@
         width: 100%;
         height: 40px;
         line-height: 40px;
-        @include font-style(16px, #000000);
+        @include font-style(16px, #34495e);
       }
       .brief{
         @include width-margin(60%, 100%);

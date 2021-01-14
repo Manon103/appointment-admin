@@ -10,12 +10,13 @@
             :value="item.id">
           </el-option>
         </el-select>
+        <el-button type="primary" icon="el-icon-circle-plus" style="margin-left: 20px"
+                     class="add-button" @click="dialogFormVisible = true">添加</el-button>
       </div>
 
       <div class="button-table-box">
         <div class="button-box">
-          <el-button type="primary"  size="small" icon="el-icon-circle-plus"
-                     class="add-button" @click="dialogFormVisible = true">添加</el-button>
+          
         </div>
         <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
         <page-pagination :page-list="pageList" ref="pagePagination"></page-pagination>
@@ -259,10 +260,9 @@
 <style scoped lang="scss">
   @import "../../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
   }
-  .button-table-box{
-    @include width-margin(90%, 100%);
-    margin-top: 15px;
+  .info-in-box {
+    align-items: center;
   }
 </style>

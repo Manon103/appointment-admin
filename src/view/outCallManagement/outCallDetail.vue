@@ -135,7 +135,8 @@
         let sunday = dateForm(week.sunday);
         let saturday = dateForm(week.saturday);
         let that = this;
-        getVisitPlanList(getCookie("username"), sunday, saturday).then(res => {
+        const userId = JSON.parse(sessionStorage.getItem('doctorInfo')).id;
+        getVisitPlanList(userId, sunday, saturday).then(res => {
           if (res.code === 200) {
             if (res.data.planListDTOList.length === 0) {
               table.dataNull = true;

@@ -233,7 +233,7 @@
 <style scoped lang="scss">
   @import "../../.././common/scss/common.scss";
   .out-box{
-    @include width-margin(90%, 100%);
+    @include width-margin(100%, 100%);
     .top-row-box{
       width: 100%;
       height: 100%;
@@ -243,9 +243,5 @@
         margin-right: 30px;
       }
     }
-  }
-  .button-table-box{
-    @include width-margin(90%, 100%);
-    margin-top: 15px;
   }
 </style>
