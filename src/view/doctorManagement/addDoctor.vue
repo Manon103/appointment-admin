@@ -18,7 +18,8 @@
           specialId: '',
           outpatientId: '',
           specialty: '',
-          isEdit: false
+          isEdit: false,
+          isExpert: 0
         }
       }
     },

@@ -34,6 +34,13 @@
           </el-select>
         </div>
         <div class="info-in-box">
+          <span class="title">是否为专家号：</span>
+          <template>
+            <el-radio v-model="doctorData.isExpert" :label="1">是</el-radio>
+            <el-radio v-model="doctorData.isExpert" :label="0">否</el-radio>
+          </template>
+        </div>
+        <div class="info-in-box">
           <span class="title">所属专科：</span>
           <el-select v-model="doctorData.specialId" placeholder="请选择">
             <el-option
@@ -70,7 +77,7 @@
       </div>
     </div>
     <el-button type="primary" style="margin-top: 15px; width:120px"
-               @click="validateData" v-loading.fullscreen.lock="loading">添加</el-button>
+               @click="validateData" :loading="loading">{{doctorData.isEdit ? '保存' : '添加'}}</el-button>
   </div>
 
 </template>
@@ -146,7 +153,8 @@
           name: this.doctorData.name,
           outpatientId: this.doctorData.outpatientId,
           specialId: this.doctorData.specialId,
-          specialty: this.doctorData.specialty
+          specialty: this.doctorData.specialty,
+          isExpert: this.doctorData.isExpert
         }).then(res => {
           if (res.code === 200) {
             this.loading = false;
@@ -170,7 +178,8 @@
           name: this.doctorData.name,
           outpatientId: this.doctorData.outpatientId,
           specialId: this.doctorData.specialId,
-          specialty: this.doctorData.specialty
+          specialty: this.doctorData.specialty,
+          isExpert: this.doctorData.isExpert
         }).then(res => {
           if (res.code === 200) {
             this.loading = false;
@@ -202,9 +211,10 @@
     // 上面的标题和按钮
     .info-in-box {
       margin-bottom: 15px;
+      align-items: center;
       .title {
         display: inline-block;
-        width: 80px;
+        width: 100px;
         text-align: left;
       }
       .el-textarea {

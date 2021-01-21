@@ -9,24 +9,23 @@
         <div class="info-out-box">
           <div class="info-in-box">
             <span class="title">编号：</span>
-            <span class="gray-text">{{hospitalData.hospitalID}}</span>
+            <span class="prop">{{hospitalData.hospitalID}}</span>
           </div>
           <div class="info-in-box">
             <span class="title">名称：</span>
-            <span class="gray-text">{{hospitalData.name}}</span>
+            <span class="prop">{{hospitalData.name}}</span>
           </div>
           <div class="info-in-box">
             <span class="title">地点：</span>
-            <span class="gray-text">{{hospitalData.address}}</span>
+            <span class="prop">{{hospitalData.address}}</span>
           </div>
           <div class="info-in-box">
             <span class="title">电话：</span>
-            <span class="gray-text">{{hospitalData.phone}}</span>
+            <span class="prop">{{hospitalData.phone}}</span>
           </div>
         </div>
-          <img :src="hospitalData.picture" class="picture-box">
       </div>
-      <div class="brief-box">
+      <div class="info-in-box">
         <span class="title">简介：</span>
         <el-input
           type="textarea"
@@ -67,6 +66,12 @@ export default {
     }
 </script>
 
+<style lang="scss">
+  .brief {
+    width: 56%
+  }
+</style>
+
 <style scoped lang="scss">
   @import "../.././common/scss/common.scss";
   .out-box{
@@ -92,6 +97,10 @@ export default {
       .info-out-box{
         width: 70%;
         height: 100%;
+        .prop {
+          color: #34495e;
+          font-size: 14px;
+        }
       }
       .picture-box{
         width: 300px;

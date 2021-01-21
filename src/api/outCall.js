@@ -36,3 +36,19 @@ export function deleteOutCallById(id) {
     method: 'delete'
   })
 }
+
+// 5 用户获取就诊记录
+export function getTreatRecord(cardId, pageNum, pageSize) {
+	return request({
+		url: '/visit/appointment/list?cardId=' + cardId + '&pageNum=' + pageNum + '&pageSize=' + pageSize,
+		method: 'get'
+	})
+}
+
+// 6 获取就诊记录详情
+export function getTreatRecordDetail(appointmentId) {
+	return request({
+		url: '/visit/appointment/details?appointmentId=' + appointmentId,
+		method: 'get'
+	})
+}

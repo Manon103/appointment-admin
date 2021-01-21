@@ -33,24 +33,8 @@
           </el-input>
         </div>
       </div>
-
-      <div class="picture-box">
-        <img :src="hospitalData.picture" class="picture" v-show="hospitalData.isEdit">
-        <img src="../../.././assets/change.png" class="change-icon" v-show="hospitalData.isEdit">
-        <el-upload
-          action="https://jsonplaceholder.typicode.com/posts/"
-          list-type="picture-card"
-          :file-list="fileList"
-          :on-preview="handlePictureCardPreview"
-          :on-remove="handleRemove"
-          :on-change="handlePhoto"
-          :class="{hide:hideUpload}"
-          v-loading.fullscreen.lock="fullscreenLoading">
-          <i class="el-icon-plus"></i>
-        </el-upload>
-      </div>
     </div>
-    <el-button class="insure-button" type="primary" style="margin: 15px 0  0 0" @click="uploadPicture">确定</el-button>
+    <el-button class="insure-button" type="primary" style="margin: 15px 0  0 0" @click="updateHospital">确定</el-button>
   </div>
 </template>
 
@@ -79,112 +63,6 @@
       }
     },
     methods: {
-      // 当上传了一张照片上去
-      handlePhoto: function (file, fileList) {
-        this.imgFile = file;
-        this.hideUpload = fileList.length >= 1;
-      },
-      // 删除上传的照片
-      handleRemove(file, fileList) {
-        if (fileList.length === 0) {
-          this.fileList = []
-        } else {
-          let dl = this.fileList.indexOf(file);
-          this.fileList.splice(dl, 1)
-        }
-        this.hideUpload = fileList.length >= 1
-      },
-      handlePictureCardPreview(file) {
-        this.imgUrl = file.url;
-        this.dialogVisible = true;
-      },
-      //  进行表单的校验
-      validate: function() {
-        for (let item in this.hospitalData) {
-          if (item !== 'picture') {
-            if (this.hospitalData[item] === '' && this.hospitalData[item] === undefined
-              && this.hospitalData[item] === null) {
-              this.isValidate = false;
-            } // end if(this.hospitalData[item] === '')
-          } // end if
-        }
-        if (!this.hospitalData.isEdit) {
-          if (!this.hideUpload) {
-            this.isValidate = false;
-          }
-        }
-        if (isValidate) {
-          this.uploadPicture() // 上传到七牛云
-        }
-      },
-      // 上传照片到七牛云
-      uploadPicture: function() {
-        this.fullscreenLoading = true;
-        const url = 'http://localhost:8080/hospital/picture/upload';
-        const config = {
-          headers: {
-            'Content-Type': 'multipart/form-data',
-            'Authorization': getToken()
-          }
-        };
-        const param = new FormData();
-        // 将图片加入formdata
-        param.append('file', this.imgFile.raw);
-        axios.post(url, param, config).then(res => {
-          if (res.data.code === 200) {
-            this.imgUrl = res.data.data;
-            if (this.hospitalData.isEdit) {
-              // 修改医院
-              this.updateHospital()
-            } else {
-              // 添加医院
-              this.addHospitalInfo()
-            }
-
-          }
-        }).catch(() => {
-          this.fullscreenLoading = false;
-          this.$notify.error({
-            title: '错误',
-            message: '修改医院失败，请检查网络或者电话号码是否重复'
-          });
-        })
-      },
-      // 向数据库进行添加医院信息的操作
-      addHospitalInfo: function () {
-        addHospital({
-          address: this.hospitalData.address,
-          description: this.hospitalData.description,
-          name: this.hospitalData.name,
-          phone: this.hospitalData.phone,
-          picture: this.imgUrl
-        }).then(res => {
-          console.log(res);
-          if (res.code === 200) {
-            this.fullscreenLoading = false;
-            this.$notify({
-              title: '成功',
-              message: '添加成功',
-              type: 'success'
-            });
-            // 添加成功后清空所填写的信息
-            let obj = this.hospitalData;
-            obj.name = '';
-            obj.address = '';
-            obj.phone = '';
-            obj.description = '';
-            obj.picture = '';
-            this.fileList = [];
-            this.hideUpload = false
-          }
-        }).catch(() => {
-          this.fullscreenLoading = false;
-          this.$notify.error({
-            title: '错误',
-            message: '添加医院失败，请检查网络或者电话号码是否重复'
-          });
-        })
-      },
       // 向数据库进行添加医院信息的操作
       updateHospital: function () {
         updateHospital(parseInt(this.hospitalData.hospitalID), {

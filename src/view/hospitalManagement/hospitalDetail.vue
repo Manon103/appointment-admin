@@ -4,8 +4,8 @@
         <span class="title">名称：</span>
         <el-input placeholder="输入医院名称" v-model="searchHospital" style="width: 30%"></el-input>
         <el-button type="primary" style="margin-left: 30px;" @click="getHospitalInfo">查询</el-button>
-        <el-button type="primary" icon="el-icon-circle-plus"
-                   class="add-button" @click="toAddHospital()">添加</el-button>
+        <!-- <el-button type="primary" icon="el-icon-circle-plus"
+                   class="add-button" @click="toAddHospital()">添加</el-button> -->
       </div>
       <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
       <page-pagination :page-list="pageList" ref="pagePagination"></page-pagination>

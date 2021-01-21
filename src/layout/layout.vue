@@ -10,11 +10,15 @@
         </el-col>
         <el-col :span="4" class="userinfo">
           <el-dropdown trigger="hover">
-            <span class="el-dropdown-link userinfo-inner">{{sysUserName}}</span>
+            <span class="el-dropdown-link userinfo-inner">
+              <i data-v-1af266a2="" class="el-icon-user" style="margin-right: 6px;"></i>
+              {{sysUserName}}
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </span>
             <el-dropdown-menu slot="dropdown">
 <!--              <el-dropdown-item>我的消息</el-dropdown-item>-->
 <!--              <el-dropdown-item>设置</el-dropdown-item>-->
-              <el-dropdown-item divided @click.native="logoutFun">退出登录</el-dropdown-item>
+              <el-dropdown-item @click.native="logoutFun">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-col>
@@ -108,6 +112,7 @@
     top: 0;
     bottom: 0;
     width: 100%;
+    text-align: center;
     .header {
       height: 60px;
       line-height: 60px;

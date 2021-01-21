@@ -8,7 +8,7 @@
             label-width="0px"
             class="demo-ruleForm login-container login-background"
         >
-            <h3 class="title">挂号系统后台管理中心</h3>
+            <h3 class="title" style="margin-bottom: 20px">挂号系统后台管理中心</h3>
             <el-form-item prop="username">
                 <el-input
                     type="text"
@@ -161,8 +161,8 @@ export default {
 .background {
     width: 100%;
     height: 100%;
-    background: url("../.././assets/background.jpg") no-repeat;
-    background-size: 100% 100%;
+    background: url("../.././assets/back.jpg") no-repeat center center;
+    background-size: cover;
     position: fixed;
     top: 0px;
     left: 0px;
@@ -175,7 +175,7 @@ export default {
     margin: 180px auto;
     width: 350px;
     padding: 35px 35px 15px;
-    background: #bed2f5;
+    background: #feffff;
     /*border: 1px solid #eaeaea;*/
     box-shadow: 0 0 25px #a7bbd4;
 }
@@ -184,6 +184,7 @@ label.el-checkbox.remember {
     margin: 0px 0px 30px 0px;
 }
 .title {
-    color: #ffffff;
+    color: #34495e;
+    text-align: center;
 }
 </style>

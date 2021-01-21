@@ -158,7 +158,6 @@
           this.accountIdentify = sessionStorage.getItem('username');
           if (this.accountIdentify !== 'admin') {
             this.infoForm = JSON.parse(sessionStorage.getItem('doctorInfo'));
-            // this.getDoctorInfo();
           }
           this.$store.dispatch('GetInfo').then(() => {})
       }

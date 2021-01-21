@@ -198,7 +198,8 @@
                   jobTitle: item.jobTitle,
                   specialty: item.specialty,
                   specialId: item.specialId,
-                  outpatientId: item.outpatientId
+                  outpatientId: item.outpatientId,
+                  isExpert: item.isExpert
                 })
               })
             } else {
