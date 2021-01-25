@@ -282,7 +282,7 @@
           hospitalId: this.selectHospitalID,
           outpatientId: this.selectOutpatientID,
           specialId: this.selectDepartmentID,
-          time: data.time
+          time: data.timeId
         }).then(res => {
           if (res.code === 200) {
             this.getAllOutCallList();
@@ -309,6 +309,7 @@
         }).then(res => {
           if (res.code === 200) {
             this.isLoading = false;
+            this.dialogFormVisible = false;
             this.getAllOutCallList();
             tips('success', '添加成功')
           }

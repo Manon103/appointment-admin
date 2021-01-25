@@ -200,6 +200,7 @@
                   if (res.code === 200) {
                     this.getOutpatientListById(this.selectID);
                     this.isLoading = false;
+                    this.dialogFormVisible = false;
                     this.$notify({
                       title: '成功',
                       message: '添加成功',

@@ -42,7 +42,7 @@
       v-loading="isLoading">
         <el-form>
           <el-form-item label="门诊名称：" label-width="120px">
-            <el-select v-model="selectOutpatientID" placeholder="请选择" @change="selectOutpatient">
+            <el-select v-model="selectOutpatientID" placeholder="请选择">
               <el-option
                 v-for="item in outpatientSelectData"
                 :key="item.id"
@@ -78,8 +78,11 @@
       data() {
           return {
             // 上面的下拉框的医院的数据
-            hospitalData: [],
-            selectHospitalID: 0,
+            hospitalData: [{
+              name: '广东省中医院',
+              id: 1000
+            }],
+            selectHospitalID: 1000,
             // 顶部的专科信息
             departmentSelectData: [],
             selectDepartmentID: 0,
@@ -144,7 +147,7 @@
               if (res.code === 200) {
                 if (res.data.list !== null) {
                   this.departmentSelectData = res.data.list;
-                  // this.selectDepartmentID = res.data.list[0].id;
+                  this.selectDepartmentID = parseInt(this.$route.query.departmentID, 10);
                   this.getOutpatientByHospital()
                 }
               }
@@ -234,7 +237,8 @@
               this.compareDepartment();
               this.getOutpatientByHospital();
               this.isLoading = false;
-              this.selectOutpatientID = ''
+              this.selectOutpatientID = '';
+              this.dialogFormVisible = false;
             }
           }).catch(() => {
             this.isLoading = false;
@@ -265,13 +269,8 @@
           this.getOutpatientListById(this.selectID)
         }
       },
-      mounted() {
-        this.hospitalData = JSON.parse(sessionStorage.getItem('hospitalList'));
-        this.selectHospitalID = this.$route.query.hospitalID;
-        this.selectDepartmentID = this.$route.query.departmentID;
+      created() {
         this.getHospitalDepartmentList();
-        this.compareOutpatient();
-        sessionStorage.removeItem('hospitalList')
       }
     }
 </script>

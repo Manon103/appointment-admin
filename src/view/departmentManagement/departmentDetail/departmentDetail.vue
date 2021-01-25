@@ -63,7 +63,7 @@
                 button: [{
                   size: 'mini',
                   type: 'primary',
-                  name: '查看'
+                  name: '查看/添加门诊'
                 }, {
                   size: 'mini',
                   type: 'success',
@@ -104,7 +104,7 @@
       methods: {
         // 获取从表格组件传过来的组件
         getTableData: function (option) {
-          if (option.buttonName === '查看') {
+          if (option.buttonName === '查看/添加门诊') {
             this.getData(option.scopeRow)
           } else if (option.buttonName === '删除') {
 
@@ -180,6 +180,7 @@
                     message: '添加成功',
                     type: 'success'
                   });
+                  this.dialogFormVisible = false;
                   this.deleteDialog.dialogFormVisible = false;
                   this.ruleForm.departmentName = '';
                   this.ruleForm.description = '';

@@ -7,7 +7,7 @@
         <table-list :tableAllData="tableAllData"></table-list>
       </div>
     </section>
-    <section class="next-box">
+    <section class="next-box" style="margin-top: 40px">
       <span class="title">下周出诊详情</span>
       <tableListNextWeek :tableAllData="nextWeekTable"></tableListNextWeek>
     </section>
@@ -42,32 +42,26 @@
             }, {
               prop: 'date',
               label: '日期',
-              width: '140',
               option: 'time'
             }, {
               prop: 'time',
               label: '时间',
-              width: '140',
               option: ''
             }, {
               prop: 'hospital',
               label: '医院',
-              width: '180',
               option: ''
             }, {
               prop: 'department',
               label: '专科/门诊',
-              width: '213',
               option: 'input'
             }, {
               prop: 'treatRoom',
               label: '诊室',
-              width: '250',
               option: 'input'
             }],
             tableData: [],
             option: '',
-            maxHeight: '210px'
           },
           nextWeekTable: {
             dataNull: false,
@@ -79,32 +73,26 @@
             }, {
               prop: 'date',
               label: '日期',
-              width: '140',
               option: 'time'
             }, {
               prop: 'time',
               label: '时间',
-              width: '140',
               option: ''
             }, {
               prop: 'hospital',
               label: '医院',
-              width: '180',
               option: 'input'
             }, {
               prop: 'department',
               label: '专科/门诊',
-              width: '213',
               option: 'input'
             }, {
               prop: 'treatRoom',
               label: '诊室',
-              width: '250',
               option: 'input'
             }],
             tableData: [],
             option: '',
-            maxHeight: '210px'
           }
         }
       },

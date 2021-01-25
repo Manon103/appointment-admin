@@ -9,7 +9,7 @@
     <div class="button-table-box">
       <div class="button-box">
         <el-button type="primary"  size="small" icon="el-icon-circle-plus"
-                   class="add-button" @click="dialogFormVisible = true">添加</el-button>
+                   class="add-button" @click="dialogFormVisible = true">添加诊室</el-button>
       </div>
       <table-list :tableAllData="tableAllData" @getTableData="getTableData" ref="tableList"></table-list>
     </div>

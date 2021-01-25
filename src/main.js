@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import Cookie from 'js-cookie'
+import { getPermission } from './permission'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
@@ -24,6 +25,11 @@ import pagePagination from '@/components/pagePagination'
 Vue.component('pagePagination',pagePagination);
 import deleteDialog from '@/components/deleteDialog'
 Vue.component('deleteDialog', deleteDialog);
+if(sessionStorage.getItem('username')){
+  router.onReady(() => {
+    getPermission()
+  });
+}
 
 new Vue({
   el: '#app',

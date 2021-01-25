@@ -233,6 +233,7 @@
               });
               this.getDoctorDepartmentList();
               this.selectDepartmentID = '';
+              this.dialogFormVisible = false;
             }
           }).catch(() => {
             this.isLoading = false;
