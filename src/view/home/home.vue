@@ -5,21 +5,21 @@
     <el-card class="out-box" shadow="never">
       <el-button type="primary" class="update-password" @click="dialogFormVisible = true">修改密码</el-button>
 <!--      任何账户都有的账户名字的信息-->
-      <el-form :model="infoForm"  class="input-box" >
-        <el-form-item label="用户账号:" label-width="100px;" >
+      <el-form :model="infoForm"  class="input-box" label-width="100px">
+        <el-form-item label="用户账号:">
           <span class="text">{{ accountIdentify }}</span>
         </el-form-item>
       </el-form>
 <!--      只有医生管理员才有的医生信息-->
       <div class="form-class" v-if="accountIdentify !== 'admin'">
-        <el-form :model="infoForm"  class="input-box"  >
-          <el-form-item label="编号ID:" label-width="100px;">
+        <el-form :model="infoForm"  class="input-box" label-width="100px">
+          <el-form-item label="编号ID:">
             <span class="text">{{ infoForm.id }}</span>
           </el-form-item>
-          <el-form-item label="用户姓名:" label-width="100px;" >
+          <el-form-item label="用户姓名:" >
             <span class="text">{{ infoForm.name }}</span>
           </el-form-item>
-          <el-form-item label="用户性别:" label-width="100px;">
+          <el-form-item label="用户性别:">
             <span class="text">{{ infoForm.gender | getGenderText }}</span>
           </el-form-item>
           <el-form-item label="用户职称:">
@@ -31,20 +31,19 @@
           <el-form-item label="用户所属门诊:">
             <span class="text">{{ infoForm.outpatientName }}</span>
           </el-form-item>
+          <el-form-item label="用户简介:">
+            <el-input
+              type="textarea"
+              placeholder="请输入内容"
+              v-model="infoForm.specialty"
+              class="brief"
+              style="margin-left: 20px"
+              show-word-limit
+              disabled
+              :autosize="{ minRows: 5, maxRows: 5}">
+            </el-input>
+          </el-form-item>
         </el-form>
-        <div class="brief-box">
-          <span class="title">用户简介：</span>
-          <el-input
-            type="textarea"
-            placeholder="请输入内容"
-            v-model="infoForm.specialty"
-            class="brief"
-            maxlength="500"
-            show-word-limit
-            disabled
-            :autosize="{ minRows: 5, maxRows: 5}">
-          </el-input>
-        </div>
       </div>
 
 
@@ -119,7 +118,7 @@
               if (this.passwordForm.newPassword === this.passwordForm.confirmPassword) {
                 this.isLoading = true;
                 updatePassword({
-                  accountId: sessionStorage.getItem('accountID'),
+                  accountId: sessionStorage.getItem('account'),
                   newPassword: SHA256(this.passwordForm.newPassword),
                   password: SHA256(this.passwordForm.password)
                 }).then(res => {
@@ -185,17 +184,16 @@
   }
   .form-class{
     width: 100%;
-    display: flex;
-    flex-direction: row;
     .brief-box{
-      @include width-margin(50%,auto);
-      @include flex-direction(column);
+      @include width-margin(60%,auto);
       margin-left: 5%;
+      text-align: left;
+      display: flex;
       .title{
-        width: 100%;
         height: 40px;
         line-height: 40px;
-        @include font-style(16px, #34495e);
+        width: 80px;
+        @include font-style(14px, #606266);
       }
       .brief{
         @include width-margin(90%, auto);

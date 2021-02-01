@@ -1,4 +1,4 @@
-<!--该页面是点击的门诊的排版的页面-->
+<!--该页面是点击的门诊的排班的页面-->
 <template>
   <div class="out-box">
     <!--      顶部的关于医院专科的选择-->
@@ -370,7 +370,7 @@
           tips('error', '获取门诊信息失败')
         })
       },
-      // 获取列表数据，医生排版的数据
+      // 获取列表数据，医生排班的数据
       getAllOutCallList: function() {
         this.tableAllData.tableData = [];
         getAllOutCallList(dateFormYMD(this.dateOutCall), this.pageList.pageNum, this.pageList.pageSize,

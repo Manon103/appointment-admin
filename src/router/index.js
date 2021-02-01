@@ -5,7 +5,7 @@ import layout from '@/layout/layout'
 Vue.use(VueRouter)
 
 export let constantRouterMap = [{
-  path: '/',
+  path: '/login',
   component: () => import('@/view/login/login'),
   hidden: true
 }, {
@@ -107,7 +107,7 @@ export const systemRouterMap = [
     }, {
       path: '/outpatientSetUp',
       component: () => import('@/view/departmentManagement/departmentSetUp/outpatientSetUp'),
-      meta: {title: '门诊排版', icon: 'el-icon-user'},
+      meta: {title: '门诊排班', icon: 'el-icon-user'},
       hidden: true
     }]
   }, {
@@ -139,55 +139,17 @@ export const systemRouterMap = [
     path: '/',
     component: layout,
     redirect: '/setUpManagement',
-    meta: {title: '排版管理', icon: 'el-icon-document'},
+    meta: {title: '排班管理', icon: 'el-icon-document'},
     children: [{
       path: '/setUpDetail',
       component: () => import('@/view/setUpManagement/setUpDetail'),
-      meta: {title: '排版详情', icon: 'el-icon-user'}
+      meta: {title: '排班详情', icon: 'el-icon-user'}
     }]
   },
-  /*{
-    path: '/',
-    component: layout,
-    redirect: '/userPermission',
-    meta: {title: '权限管理', icon: 'el-icon-user'},
-    children: [{
-      path: '/userList',
-      iconCls: 'el-icon-guide',
-      component: () => import('@/view/userPermission/user/userList'),
-      meta: {title: '用户列表', icon: 'el-icon-user'}
-    }, {
-      path: '/roleList',
-      component: () => import('@/view/userPermission/role/roleList'),
-      meta: {title: '角色列表', icon: 'el-icon-user'}
-    }, {
-      path: '/menuList',
-      component: () => import('@/view/userPermission/menu/menuList'),
-      meta: {title: '菜单列表', icon: 'el-icon-user'}
-    }, {
-      path: '/resourceList',
-      component: () => import('@/view/userPermission/resource/resourceList'),
-      meta: {title: '资源列表', icon: 'el-icon-user'}
-    }, {
-      path: '/addMenu',
-      component: () => import('@/view/userPermission/menu/addMenu'),
-      meta: {title: '添加菜单', icon: 'el-icon-user'},
-      hidden: true
-    }, {
-      path: '/editMenu',
-      component: () => import('@/view/userPermission/menu/editMenu'),
-      meta: {title: '编辑菜单', icon: 'el-icon-user'},
-      hidden: true
-    }, {
-      path: '/sonMenu',
-      component: () => import('@/view/userPermission/menu/sonMenu'),
-      meta: {title: '二级菜单', icon: 'el-icon-user'},
-      hidden: true
-    }]
-  },*/
   {path: '*', redirect: '/404', hidden: true}
 ];
 export default new VueRouter({
+  mode: 'history',
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRouterMap
 })

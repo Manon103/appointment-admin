@@ -179,7 +179,7 @@
           })
         },
         //
-        // 点击查看门诊按钮跳转到门诊的排版页面
+        // 点击查看门诊按钮跳转到门诊的排班页面
         toOutpatient: function(row) {
           sessionStorage.setItem('hospitalList', JSON.stringify(this.hospitalData));
           this.$router.push({

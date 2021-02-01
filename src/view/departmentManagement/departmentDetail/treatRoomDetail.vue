@@ -183,6 +183,7 @@
                   this.ruleForm.outCallName = '';
                   this.getTreatRoomList();
                   this.isLoading = false;
+                  this.dialogFormVisible = false;
                 }
               }).catch(() => {
                 this.isLoading = false;

@@ -49,7 +49,7 @@ const user = {
       return new Promise((resolve, reject) => {
         getUserInfo().then(response => {
           const data = response.data;
-          sessionStorage.setItem('accountID', data.accountId);
+          sessionStorage.setItem('account', data.accountId);
           if (data.roles && data.roles.length > 0) { // 验证返回的roles是否是一个非空数组
             commit('SET_NAME', data.userName)
           } else {

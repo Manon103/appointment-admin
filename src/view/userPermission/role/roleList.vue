@@ -104,7 +104,7 @@
           }, {
             ID: '4',
             englishName: 'setUpManagement',
-            chineseName: '排版管理',
+            chineseName: '排班管理',
             status: 1
           }, {
             ID: '5',
@@ -174,7 +174,7 @@
           this.deleteAccount(option)
         }
       },
-      // 点击查看门诊按钮跳转到门诊的排版页面
+      // 点击查看门诊按钮跳转到门诊的排班页面
       toOutpatient: function(row) {
         this.$router.push({
           path: '/outpatientSetUp',
