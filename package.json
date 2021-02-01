@@ -2,7 +2,6 @@
   "name": "appoint-admin",
   "description": "A Vue.js project",
   "version": "1.0.0",
-  "author": "yyyangyx <yyyangyx@163.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
